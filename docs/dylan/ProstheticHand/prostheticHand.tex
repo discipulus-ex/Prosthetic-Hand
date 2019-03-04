@@ -1,8 +1,13 @@
 \documentclass[a4paper]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage{hyperref}
+\usepackage{apacite}
 \usepackage{graphicx}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 \graphicspath{ {./images/} }
+\bibliographystyle{apacite}
 
 \title{\Huge{Prosthetic Hand} } 
 \author{Dylan Duunk \\ \textit{Discipulus-Ex} }
@@ -15,17 +20,33 @@
 \end{titlepage}
 
 \pagenumbering{roman}
+\listoftodos[TODO]
+
+\newpage
+
+\begin{abstract}
+    \noindent 
+    \todo{The following section needs to be rewritten!}
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+\end{abstract}
+
 \newpage
 \tableofcontents
 \newpage
 \pagenumbering{arabic}
 
-\section{Summary}
+\section{Introduction}
+\todo{The following section needs to be rewritten!}
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
+\newpage
 
+\bibliography{literature}
 
 \end{document}

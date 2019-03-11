@@ -4,7 +4,13 @@
 \usepackage{hyperref}
 \usepackage{apacite}
 \usepackage{graphicx}
+\usepackage{array}
+\usepackage{threeparttable}
+\usepackage{amsmath}
+\usepackage{booktabs}
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\renewcommand{\arraystretch}{1.5}
 
 \graphicspath{ {./images/} }
 \bibliographystyle{apacite}
@@ -44,6 +50,37 @@
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+\section{Materials}
+
+\subsection{Plastic}
+PLA and ABS are 2 of the most common FDM (Fused deposition modeling) desktop printing materials.
+Both materials are thermoplastics, meaning they become pliable or moldable at a certain elevated temperature and solidifies upon cooling.
+Via the FDM process, both materials are melted and then extruded trough a nozzle to build up the layers that create a final part.
+\\ \\
+Table \ref{tab:pla-abs} below compares the main properties between PLA \& ABS:
+\begin{table}[ht]
+    \centering
+    \begin{threeparttable}
+        \begin{tabular}[t]{>{\bfseries}l l l}
+            \toprule
+            Properties* & \textbf{PLA} & \textbf{ABS} \\
+            \midrule
+            Density & $1.3 g/cm^3$ & $1.0 - 1.4 g/cm^3$ \\
+            Enlongation & 6\% & 3.5-50\% \\ %https://en.wikipedia.org/wiki/Deformation_(mechanics)#Stretch_ratio
+            Flexural Modulus & 4GPa & 2.1-7.6 GPa \\ %https://en.wikipedia.org/wiki/Flexural_modulus
+            Melting Point & $160\,^{\circ}{\rm C}$ & N/A (amorphous) \\
+            Biodegradable & Yes, under the correct conditions & No \\
+            Glass Transition Temperature & $60\,^{\circ}{\rm C}$ & $105\,^{\circ}{\rm C}$ \\ %https://en.wikipedia.org/wiki/Glass_transition
+            \bottomrule
+        \end{tabular}
+        \caption{Comparing PLA with ABS}
+        \label{tab:pla-abs}
+        \begin{tablenotes}
+            \item[*] \textit{Sourced from \cite{MakeItFrom}}
+        \end{tablenotes}    
+    \end{threeparttable}    
+\end{table}
 
 \newpage
 

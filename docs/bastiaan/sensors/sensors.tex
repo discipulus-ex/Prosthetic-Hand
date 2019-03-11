@@ -1,0 +1,147 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage[parfill]{parskip}
+\tolerance=1000
+\hyphenpenalty=1000
+%\hbadness=10000
+%\widowpenalties=1 10000
+%\raggedbottom
+
+\usepackage[bookmarks]{hyperref}
+\usepackage[defernumbers,sortcites,sorting=none]{biblatex}
+%\usepackage{blindtext}
+\usepackage{booktabs}
+\usepackage{pifont}
+%\usepackage{enumitem}
+%\usepackage{graphicx, wrapfig}
+%\usepackage{mathtools}
+%\usepackage{subcaption}
+%\usepackage{textcomp}
+
+\usepackage{cochineal}
+\usepackage[varqu,varl,var0]{zi4} % Inconsolata
+\usepackage[scale=.95,type1]{cabin}
+\usepackage[cochineal,bigdelims,cmintegrals,vvarbb]{newtxmath}
+\usepackage[cal=boondoxo]{mathalfa}
+
+\title{Research on sensors}
+\author{Bastiaan Teeuwen (0945334) --- Discipulus Ex}
+\date{\today}
+
+\addbibresource{bibliography.bib}
+
+\begin{document}
+
+\maketitle
+
+In this document, I will review a variety of sensors that we could use to get
+input for our prosthetic hand.
+
+\section{Muscle sensors}
+One possibility would be to use muscle sensors, also called electromyography
+(EMG), to record electrical activity produced by the muscles. Electrodes would
+be placed on one's upper arm or forearm. An EMG device would be used to detect
+the level of activation of certain muscles.~\cite{emg}
+
+A quick Internet search reveals that muscle sensors are relatively easy to
+acquire and interface with. Take the
+\href{https://www.sparkfun.com/products/13723}{MyoWare Muscle Sensor} for
+example. The only interfacing device required is an Arduino to read out the
+voltage levels.
+
+Various studies have been done on using EMGs to capture finger movement. In one
+study, four electrodes were placed on the forearm after which various finger
+motions were performed. The data was fed into and EMG and after a 25 training
+sessions the finger motions could be precisely registered. The results are
+pretty stunning with a reported accuracy of 97.75\%.~\cite{decoding}\\
+The question is whether this will still work when the patient is missing his or
+her fingers.
+
+\section{Brainwave sensors}
+A brainwave sensor, also called electroencephalography (EEG) is a method of
+monitoring electrical brainwave activity. The idea is that electrodes are placed
+on one's skull after which the EEG device will record the various known brain
+waves.~\cite{eeg} Let's look at the various types of brainwaves to see if
+they're of any use to us.
+
+EEG devices are relatively more expensive and not as easy to interface with as
+EMGs.~\cite{eegbuy}
+
+\subsection{Delta wave}
+First, we have the $\delta$ (delta) wave, which is commonly used to analyse
+one's sleep pattern.~\cite{delta}
+
+\subsection{Theta wave}
+Then we have the $\theta$ (theta) wave, which can be linked to whether one is in
+an idle state or performing a certain task. It is also related to motor behavior
+as a result of sensory stimuli.~\cite{theta}
+
+\subsection{Alpha wave}
+The $\alpha$ (alpha) wave, just like the Delta wave, is linked to sleep activity
+as well. It can also be weakly linked to the Visual cortex which is a part of
+the brain that processes visual information.~\cite{alpha}
+
+\subsection{Beta wave}
+The $\beta$ (beta) wave is associated with various different state of
+consciousness like flow, relaxation, anxiety, and so on.~\cite{flow}
+Furthermore, this brain wave is also associated with isotonic (static) muscle
+contractions, meaning the contraction of muscles without movement (like when
+performing pushups or lat pulldowns~\cite{isotonic}).~\cite{beta}
+
+\subsection{Gamma wave}
+No much is known about the $\gamma$ (gamma) wave, other than that it is possibly
+related to consciousness.~\cite{gamma}
+
+\subsection{Mu wave}
+The final distinguishable brain wave is the $\mu$ (mu) wave. The Mu wave is most
+prominent in the Motor cortex, a part of the brain which controls coordinated
+movements. Besides actual motor movement, intention of movement can also be
+traced back to the Mu wave. This is especially of interest to people who are
+missing a certain body part. One would be able to visualize a movement and this
+could (with enough training) be registered as a Mu wave on an EEG
+device.~\cite{mu}
+
+\subsection{Conclusion}
+The $\theta$ (theta) wave could possibly be of interest to us as it is related
+to motor movement. But the $\mu$ (mu) wave would probably be of greater interest
+to us as it can be strongly linked to motor activity and intention of motor
+activity regardless of stimuli.
+We could look for a pattern in both of these waves relating to the muscle
+movement in the hand or fingers.
+
+\section{Morphological chart}
+
+\begin{center}
+\begin{tabular}{l c c}
+	& EMG & EEG\\
+	\midrule
+	Ease of use & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73}\\
+	Observability & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73}\\
+	Intention observability & \ding{73}\ding{73}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73}\\
+	Research & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73}\\
+	Interfacing & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73}\\
+	Price & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73}\\
+	\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+An advantage of using electroencephalography over electromyography is that the
+brainwaves for controlling a body part are always detectable even if a patient
+is missing that body part. The advantage of using an EMG is that they're
+easier to work with as less decoding is required and less noise is present.
+Furthermore, more research has been done on using EMGs for prosthetic
+applications.~\cite{emg}
+
+I would recommend we try the EMG first and only try using the EEG if we are
+unable to register movement in patients with missing fingers.
+
+\newpage
+\printbibliography{}
+
+\end{document}

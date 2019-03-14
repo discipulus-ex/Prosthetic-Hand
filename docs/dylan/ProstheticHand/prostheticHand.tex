@@ -2,17 +2,18 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
-\usepackage{apacite}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{pifont}
 \usepackage{threeparttable}
 \usepackage{amsmath}
 \usepackage{booktabs}
+\usepackage{lipsum}
 
 \renewcommand{\arraystretch}{1.5}
 
 \graphicspath{ {./images/} }
-\bibliographystyle{apacite}
+\bibliographystyle{plain}
 
 \title{\Huge{Prosthetic Hand} } 
 \author{Dylan Duunk \\ \textit{Discipulus-Ex} }
@@ -30,10 +31,7 @@
 
 \begin{abstract}
     \noindent 
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    \lipsum[1]
 \end{abstract}
 
 \newpage
@@ -42,10 +40,7 @@
 \pagenumbering{arabic}
 
 \section{Introduction}
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+\lipsum[1]
 
 \section{Materials}
 
@@ -60,10 +55,10 @@ Table \ref{tab:pla-abs} below compares the main properties between PLA \& ABS:
     \begin{threeparttable}
         \begin{tabular}[t]{>{\bfseries}l l l}
             \toprule
-            Properties* & \textbf{PLA} & \textbf{ABS} \\
+            Properties\tnote{1} & \textbf{PLA} & \textbf{ABS} \\
             \midrule
             Density & $1.3 g/cm^3$ & $1.0 - 1.4 g/cm^3$ \\
-            Enlongation & 6\% & 3.5-50\% \\ %https://en.wikipedia.org/wiki/Deformation_(mechanics)#Stretch_ratio
+            Elongation & 6\% & 3.5-50\% \\ %https://en.wikipedia.org/wiki/Deformation_(mechanics)#Stretch_ratio
             Flexural Modulus & 4GPa & 2.1-7.6 GPa \\ %https://en.wikipedia.org/wiki/Flexural_modulus
             Melting Point & $160\,^{\circ}{\rm C}$ & N/A (amorphous) \\
             Biodegradable & Yes, under the correct conditions & No \\
@@ -73,12 +68,98 @@ Table \ref{tab:pla-abs} below compares the main properties between PLA \& ABS:
         \caption{Comparing PLA with ABS}
         \label{tab:pla-abs}
         \begin{tablenotes}
-            \item[*] \textit{Sourced from \cite{MakeItFrom}}
+            \item[1] \textit{Sourced from MakeItFrom \cite{MakeItFrom}}
         \end{tablenotes}    
     \end{threeparttable}    
 \end{table}
 
-\subsection{Silicon}
+\subsection{Silicone}
+Silicone is a dynamic material that moves with the body while simultaneously offering 
+an enhanced grip on the residual limb and improved suspension of the prosthesis.
+Silicone is mostly used in realistic looking prosthetics and for mold making.
+\\ \\ 
+Table \ref{tab:silicone-properties} below gives the main properties of silicone:
+\begin{table}[ht]
+    \centering
+    \begin{threeparttable}
+        \begin{tabular}[t]{>{\bfseries}l l}
+            \toprule
+            Properties\tnote{1} & \textbf{Silicone plastic}  \\
+            \midrule
+            Density & $1.9 g/cm^3$  \\
+            Elastic Modulus & 9.0 GPa \\ %https://en.wikipedia.org/wiki/Elastic_modulus
+            Max. Temperature: Decomposition & $480\,^{\circ}{\rm C}$  \\
+            Biodegradable & No  \\
+            Glass Transition Temperature & $200\,^{\circ}{\rm C}$  \\ %https://en.wikipedia.org/wiki/Glass_transition
+            \bottomrule
+        \end{tabular}
+        \caption{Properties silicone plastic}
+        \label{tab:silicone-properties}
+        \begin{tablenotes}
+            \item[1] \textit{Sourced from MakeItFrom \cite{MakeItFrom}}
+        \end{tablenotes}    
+    \end{threeparttable}    
+\end{table}
+
+\subsection{Carbon Fiber}
+Carbon fiber reinforced plastic (CFRP), is an extremely strong and light fiber-reinforced plastic which contains carbon fibers.
+Carbon fiber is often used in prosthetics, sports equipment, aerospace and wherever the high strength-to-weight ratio and stiffness from carbon fiber are required.
+CFRPs are composite materials.
+In this case the composite consists of two parts: a matrix and a reinforcement.
+In this case the reinforcement is carbon fiber, which provides the strength.
+The matix is usually a polymer resin, such as epoxy, to bind the reinforcements together.
+This makes the material properties depend on those distinct elements.
+
+\subsection{Metal}
+Alloys containing titanium are known for their high strength, lightweight, and exceptional corrosion resistance.
+Despite being as strong as steel, titanium is about 40\% lighter in weight.
+Titanium is also formidable in its resistance to corrosion by both water and chemical media.
+\\
+Because titanium has a low modulus of elasticity that means titanium is not also very flexible, but returns to its original shape after bending.
+\\ \\
+Aluminium is a very light metal with a specific weigt of $2.7 g/cm^3$, about a third that of steel.
+Its strength can be adapted to the apllication required by modifying the composition of its alloys.
+Aluminium naturally generates a protective oxide coating and is highly corrosion resistant which can be further imporeved by different types of surface treatments. 
+This is particularly usefull for applications where protection and conservation are required.
+
+\section{Morphological chart}
+% 0 stars 
+% \ding{73}\ding{73}\ding{73}\ding{73}\ding{73}
+% 1 stars 
+% \ding{72}\ding{73}\ding{73}\ding{73}\ding{73} 
+% 2 stars 
+% \ding{72}\ding{72}\ding{73}\ding{73}\ding{73}
+% 3 stars 
+% \ding{72}\ding{72}\ding{72}\ding{73}\ding{73}
+% 4 stars 
+% \ding{72}\ding{72}\ding{72}\ding{72}\ding{73}
+% 5 stars 
+% \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} 
+\begin{table}[ht]
+    \centering
+    \begin{threeparttable}
+        \begin{tabular}[t]{>{\bfseries}l c c c c c c}
+            \toprule
+            & \textbf{PLA} & \textbf{ABS} & \textbf{Silicone} & \textbf{Carbon} & \textbf{Titanium\tnote{1}} & \textbf{Aluminium\tnote{1}}  \\
+            \midrule
+            Easy of use & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{73}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73} \\
+            Strength & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} \\
+            Weight\tnote{2} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72}  & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72}  \\
+            Elastic Modulus & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} \\
+            Price & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{73}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} \\
+            Usability\tnote{3} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{72} & \ding{72}\ding{72}\ding{72}\ding{72}\ding{73} & \ding{72}\ding{72}\ding{72}\ding{73}\ding{73} & \ding{72}\ding{73}\ding{73}\ding{73}\ding{73} & \ding{73}\ding{73}\ding{73}\ding{73}\ding{73} & \ding{72}\ding{73}\ding{73}\ding{73}\ding{73} \\
+            \bottomrule
+        \end{tabular}
+        \caption{Materials Morphological Chart}
+        \label{tab:morphchart-material}  
+        \begin{tablenotes}
+            \item[] These values in this Morphological Chart are based on eachother.
+            \item[1] The material properties of these materials can vary based on the alloys used.
+            \item[2] Weight is based on how lightweight the material is.
+            \item[3] Usability in this case is based on how usefull this material will be for our prototype.  
+        \end{tablenotes}    
+    \end{threeparttable}   
+\end{table}
 
 \newpage
 

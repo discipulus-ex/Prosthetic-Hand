@@ -1,9 +1,10 @@
-\documentclass[a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{enumitem}
 \usepackage{pifont}
 \usepackage{threeparttable}
 \usepackage{amsmath}
@@ -27,12 +28,12 @@
 
 \pagenumbering{roman}
 
-\newpage
+% \newpage
 
-\begin{abstract}
-    \noindent 
-    \lipsum[1]
-\end{abstract}
+% \begin{abstract}
+%     \noindent 
+%     \lipsum[1]
+% \end{abstract}
 
 \newpage
 \tableofcontents
@@ -40,9 +41,16 @@
 \pagenumbering{arabic}
 
 \section{Introduction}
-\lipsum[1]
+Prostheses have advanced signifantly in their functional capabilities and appearances over the past few year.
+The latest trends in fabrication are elevating prosthetic comfort, function, and appearance for thousands of prosthesis users.
+But most of the higher-end prostheses are way to expensive for most people, and while more and more people are eligible for prosthesis.
+\\ \\
+With the latest technology of 3d printing and accessibility to a 3d printer, the production of prostheses has become a lot easier and cheaper.
+With the open source community of 3d printing, everyone with access to a 3d printer can make a prosthetic for themselves.
+\\ \\
+In this document, I will assess a variety of materials based on their suitablility for prostheses whilst maintaining a comfortable fit. 
 
-\section{Materials}
+\section{Materials} \label{materials}
 Material choice plays a major role in prostheses.
 Prostheses must be both strong and lightweight, they must be able to withstand the extensive use of the owner without obstructing there range of motion.
 \\
@@ -171,6 +179,34 @@ This is because PLA and ABS are easy to use for rapid prototyping, in a relative
 When further developing this prototype to a product i suggest to look into replacing parts with stronger materials.
 When it comes to silicone, silicone is very suitable for the grip pads.
 These pads make it easier to pick up objects.
+
+\section{Comfort}
+Comfort is an important factor for prostheses.
+The prostheses must be an addition for the user, so that the user benefits of the prosthetic instead of being a chore.
+Ideally the user shouldn't notice that a prosthesis is present.
+This makes the user feel like a normal person and that the prosthesis is part of the body.
+\\
+Below I will describe which factors play a role in the comfort of prostheses.
+
+\begin{description}[align=left]
+    \item[Weight] The user must be able to wear the prosthesis for long periods of time in order to be usefull, this is why the prosthesis must be lightweight.
+                  Otherwise the user has to carry the have load of the prosthesis and is therefore not sufficient.
+    \item[Range of motion] The user must be able to have a relatively free range of motion, so that the user doesn't feel restricted.                       
+    \item[Fit] The prosthesis must be securly fit to the user without impending the bloodflow.
+               The fit shouldn't be to loose either, otherwise it will slip around all the time. 
+    \item[Breathability] Because the user is wearing the prosthesis for longer periods of time, the user's skin needs to be able to freely breathe.   
+\end{description}
+
+\subsection{Conclusion}
+These are my recommendations for improving the comfort of our prototype:
+\begin{description}[align=left]
+    \item[Weight] See section Materials \ref{materials} for my recommendation about materials and weight.
+                  Another way to minimize weight is by using light weight electrical components. 
+    \item[Range of motion] All moveable parts in the prototype should be able to move freely.
+                           These parts shouldn't restrict the movements that the user has without the prosthesis.  
+    \item[Fit] Make the prototype fit the users arm by giving a almost perfect fit.
+    \item[Breathability] This is done by giving the part that fits the users arm some breathing holes, whilst not compromising structural integrity.
+\end{description}
 
 \newpage
 

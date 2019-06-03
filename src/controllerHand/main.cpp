@@ -21,7 +21,6 @@ void loop() {
     val = analogRead(potPin);
     val = map(val, 0, 1023, 0, 180);
 
-
     // Iterate over the fingers
     for (int i = 0; i < sizeof(fingerButtons); i++) {
         fingerButtons[i].reading = digitalRead(fingerButtons[i].pin);

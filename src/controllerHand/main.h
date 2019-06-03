@@ -18,20 +18,32 @@ int middleServoPin = 10;
 int ringServoPin = 11;
 int pinkServoPin = 12;
 
+// int thumbButtonPin = 8;
+// int indexButtonPin = 9;
+int middleButtonPin = 2;
+int ringButtonPin = 3;
+int pinkButtonPin = 4;
+
 int potPin = 0;
 int val;
 
-const byte ROWS =  3;
-const byte COLS = 3;
+int thumbState = HIGH;
+int indexState = HIGH;
+int middleState = HIGH;
+int ringState = HIGH;
+int pinkState = HIGH;
 
-char hexaKeys[ROWS][COLS] = {
-    {'1', '2', '3'},
-    {'4', '5', '6'},
-    {'7', '8', '9'}
-};
+int thumbReading,
+    indexReading,
+    middleReading,
+    ringReading,
+    pinkReading;
 
-byte rowPins[ROWS] = {7, 6, 5};
-byte colPins[COLS] = {4, 3, 2};
+int prevThumb = LOW;
+int prevIndex = LOW;
+int prevMiddle = LOW;
+int prevRing = LOW;
+int prevPink = LOW;
 
-Keypad keypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
-
+long time = 0;
+long debounce = 200;

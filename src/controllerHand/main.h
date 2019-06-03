@@ -1,6 +1,5 @@
 #pragma once
-
-// #include "Arduino.h"  
+ 
 #include "Servo.h"
 #include "Keypad.h"
 
@@ -17,6 +16,7 @@ struct Button {
     int prev;
 };
 
+// Pre-defined buttons for each finger
 Button fingerButtons[] = {
     { "Thumb", 5, HIGH, 0, LOW }, //TODO: Change pin
     { "Indexfinger", 6, HIGH, 0, LOW }, //TODO: Change pin

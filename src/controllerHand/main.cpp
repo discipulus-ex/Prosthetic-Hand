@@ -5,103 +5,47 @@ void setup() {
     Serial.begin(BAUD_RATE);
 
     // attach pins to the servo's
-    thumbServo.attach(thumbServoPin);
-    indexServo.attach(indexServoPin);
-    middleServo.attach(middleServoPin);
-    ringServo.attach(ringServoPin);
-    pinkServo.attach(pinkServoPin);
+    for (int i = 0; i < sizeof(handServos); i++) {
+        handServos[i].attach(i + beginServoPin);
+    }
 
-    pinMode(middleButtonPin, INPUT_PULLUP);
-    pinMode(ringButtonPin, INPUT_PULLUP);
-    pinMode(pinkButtonPin, INPUT_PULLUP);
+    for (int i = 0; i < sizeof(fingerButtons); i++) {
+        pinMode(fingerButtons[i].pin, INPUT_PULLUP);
+    }
 }
 
 void loop() {
-    // read the value of the potmeter and map to
+    // Read the value of the potmeter and map to
     // this value compatible with servo's
     val = analogRead(potPin);
     val = map(val, 0, 1023, 0, 180);
 
-    // print the value to serial for debuggging purposes
+    // Print the value to serial for debuggging purposes
     Serial.println(val);
 
-    // thumbReading = digitalRead(thumbButtonPin);
-    // indexReading = digitalRead(indexButtonPin);
-    middleReading = digitalRead(middleButtonPin);
-    ringReading = digitalRead(ringButtonPin);
-    pinkReading = digitalRead(pinkButtonPin);
+    // Iterate of the fingers
+    for (int i = 0; i < sizeof(fingerButtons); i++) {
+        fingerButtons[i].reading = digitalRead(fingerButtons[i].pin);
 
-    if (middleReading == HIGH && prevMiddle == LOW && millis() - time > debounce) {
-        if (middleState == HIGH)
-            middleState = LOW;
-        else 
-            middleState = HIGH;   
+        // Makes the each button act like a switch
+        if (fingerButtons[i].reading == HIGH && fingerButtons[i].prev == LOW && millis() - time > debounce) {
+            if (fingerButtons[i].state == HIGH) 
+                fingerButtons[i].state = LOW;
+            else 
+                fingerButtons[i].state = HIGH;
 
-        time = millis();     
-    }
+            time = millis();        
+        }
 
-    if (ringReading == HIGH && prevRing == LOW && millis() - time > debounce) {
-        if (ringState == HIGH)
-            ringState = LOW;
-        else 
-            ringState = HIGH;   
+        if (fingerButtons[i].state) {
+            // Makes the fingers response to the potMeter when
+            // button state == HIGH
+            handServos[i].write(val);
+            delay(15);
+        } else {
+            handServos[i].write(0);
+        }
 
-        time = millis();     
-    }
-
-    if (pinkReading == HIGH && prevPink == LOW && millis() - time > debounce) {
-        if (pinkState == HIGH)
-            pinkState = LOW;
-        else 
-            pinkState = HIGH;   
-
-        time = millis();     
-    }
-
-
-    prevMiddle = middleReading;
-    prevRing = ringReading;
-    prevPink = pinkReading;
-}
-
-void handleServos() {
-    // if (thumbState) {
-    //     thumbServo.write(val);
-    //     delay(15);
-    // } else {
-    //     thumbServo.write(0);
-    //     delay(15);
-    // }
-
-    // if (indexState) {
-    //     indexServo.write(val);
-    //     delay(15);
-    // } else {
-    //     indexServo.write(0);
-    //     delay(15);
-    // }
-
-    if (middleState) {
-        middleServo.write(val);
-        delay(15);
-    } else {
-        middleServo.write(0);   
-        delay(15); 
-    }
-
-    if (ringState) {
-        ringServo.write(val);
-        delay(15);
-    } else {
-        ringServo.write(0);   
-        delay(15); 
-    }
-
-    if (pinkState) {
-        pinkServo.write(val);
-        delay(15);
-    } else {
-        pinkServo.write(0);   
-        delay(15); 
+        fingerButtons[i].prev = fingerButtons[i].reading;
     }
 }

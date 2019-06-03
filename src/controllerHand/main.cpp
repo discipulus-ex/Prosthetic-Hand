@@ -1,14 +1,15 @@
 #include "main.h"
 
 void setup() {
-    // start serial monitor
+    // Start serial monitor
     Serial.begin(BAUD_RATE);
 
-    // attach pins to the servo's
+    // Attach pins to the servo's
     for (int i = 0; i < sizeof(handServos); i++) {
         handServos[i].attach(i + beginServoPin);
     }
 
+    // Configure pinMode for each button
     for (int i = 0; i < sizeof(fingerButtons); i++) {
         pinMode(fingerButtons[i].pin, INPUT_PULLUP);
     }
@@ -20,8 +21,6 @@ void loop() {
     val = analogRead(potPin);
     val = map(val, 0, 1023, 0, 180);
 
-    // Print the value to serial for debuggging purposes
-    Serial.println(val);
 
     // Iterate of the fingers
     for (int i = 0; i < sizeof(fingerButtons); i++) {
@@ -38,12 +37,19 @@ void loop() {
         }
 
         if (fingerButtons[i].state) {
-            // Makes the fingers response to the potMeter when
+            // Makes the fingers response to the potmeter when
             // button state == HIGH
             handServos[i].write(val);
+
+            // Print te value of potmeter with is asociated finger
+            Serial.print(fingerButtons[i].name);
+            Serial.print(" ");
+            Serial.println(val);
+
             delay(15);
         } else {
             handServos[i].write(0);
+            delay(15);
         }
 
         fingerButtons[i].prev = fingerButtons[i].reading;

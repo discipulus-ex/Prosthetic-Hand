@@ -18,7 +18,7 @@
 ---
 
 ## Installation
-TODO
+Coming soon!
 
 ### Clone
 Clone this repo to your local machine using:
@@ -29,13 +29,14 @@ $ git clone https://github.com/discipulus-ex/Prosthetic-Hand.git
 ---
 
 ## Features
-TODO
+Coming soon!
 
 ## Usage
-TODO
+Coming soon!
+
 
 ## Documentation
-TODO
+Coming soon!
 
 ---
 

@@ -7,41 +7,48 @@
  */
 #pragma once
 
-// long time = 0;
-const long debounce = 20;
+#include "Arduino.h"
 
 /**
  * @brief       Button object
  *              Define in a zero-terminated array
  */
-struct Button {
-    const char name[20];
-    const int pin;
-
-    /**
-     * @brief       Called on button press
-     */
-    const void (*onPress)(void);
-
-    /**
-     * @brief       Called on release of button
-     * @param[in]   Duration that the button was pressed in milliseconds
-     */
-    const void (*onRelease)(unsigned long duration);
-
-    // Private variables
+class Button {
+    void (*onPress)(void *self);
+    void (*onRelease)(void *self, unsigned long duration);
     unsigned long lastPushed;
     unsigned long lastPressed;
+
+public:
+    const char * name;
+    const int pin;
+
+    // Configuration
+    unsigned long debounce = 20;
+
+    /**
+     * @brief       Initialize a button
+     * @param       The button's name
+     * @param       The hardware pin number
+     * @param       Button press callback
+     * @param       Button release callback
+     */
+    Button(const char * name,
+           const int pin,
+           void (*onPress)(void *self) = nullptr,
+           void (*onRelease)(void *self, unsigned long duration) = nullptr);
+
+    /**
+     * @brief       Check if button is Pressed
+     * @return      True when pressed, false otherwise
+     */
+    bool pressed();
+
+    /**
+     * @brief       Service the button, checking if the state changed
+     * @param       User data to pass to *self of callbacks
+     */
+    void service(void *userData);
+
+    static Button EOL(void);
 };
-
-/**
- * @brief       Initialize an array of Buttons
- * @param       Zero-terminated button array
- */
-void Button_start(const Button *btns);
-
-/**
- * @brief       Service an array of Buttons
- * @param       Zero-terminated button array
- */
-void Button_service(const Button *btns);

@@ -1,5 +1,13 @@
 #include "Button.h"
 
+long time = 0;
+
+void Button_start(const Button *btns) {
+    for (Button *btn = (Button *)btns; btn->pin; btn++) {
+        pinMode(btn->pin, INPUT_PULLUP);
+    }
+}
+
 void Button_service(const Button *btns) {
     // Get current time
     time = millis();

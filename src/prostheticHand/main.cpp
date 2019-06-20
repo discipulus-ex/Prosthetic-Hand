@@ -20,6 +20,11 @@ void setup() {
 
 void playCallback() {
     Serial.println("Start!");
+    // handServos[activeServo].write(180);
+    for (int i = 0; i < sizeof(handServos) / sizeof(handServos[0]); i++) {
+        handServos[i].write(180);
+        delay(1000);
+    } 
 }
 
 void pauseCallback() {
@@ -28,14 +33,20 @@ void pauseCallback() {
 
 void stopCallback() {
     Serial.println("Stop!");
+    for (int i = 0; i < sizeof(handServos) / sizeof(handServos[0]); i++) {
+        handServos[i].write(0);
+        delay(1000);
+    } 
 }
 
 void nextCallback() {
     Serial.println("Next!");
+    activeServo++;
 }
 
 void prevCallback() {
     Serial.println("Previous!");
+    activeServo--;
 }
 
 void releaseCallback(unsigned long duration) {
@@ -47,7 +58,7 @@ void releaseCallback(unsigned long duration) {
 
 void loop() {
     // Handle buttons
-    serviceButtons(inputButtons);
+    Button_service(inputButtons);
 
     // Handle other things ...
 }

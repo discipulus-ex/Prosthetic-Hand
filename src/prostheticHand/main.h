@@ -1,12 +1,13 @@
 /**
- * @file        Main.cpp
+ * @file        main.cpp
  * @date        2019-06-19
  * @author      Dylan Duunk
  * 
  * @brief       Pin defines and callbacks
  */
 #pragma once
- 
+
+#include "Arduino.h"
 #include "Servo.h"
 #include "Button.h"
 
@@ -61,7 +62,5 @@ Button inputButtons[] = {
     { 0 } // End of list
 };
 
+int activeServo = 0;
 uint8_t value;
-long time = 0;
-const long debounce = 20;
-

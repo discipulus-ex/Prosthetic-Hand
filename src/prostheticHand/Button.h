@@ -7,6 +7,9 @@
  */
 #pragma once
 
+// long time = 0;
+const long debounce = 20;
+
 /**
  * @brief       Button object
  *              Define in a zero-terminated array
@@ -35,10 +38,10 @@ struct Button {
  * @brief       Initialize an array of Buttons
  * @param       Zero-terminated button array
  */
-void Button_start(Button *btns);
+void Button_start(const Button *btns);
 
 /**
  * @brief       Service an array of Buttons
  * @param       Zero-terminated button array
  */
-void Button_service(Button *btns);
+void Button_service(const Button *btns);

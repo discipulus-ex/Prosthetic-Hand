@@ -1,9 +1,9 @@
 /**
- * @file        Gesture.cpp
+ * @file        NA
  * @date        2019-06-19
  * @author      Dylan Duunk
  * 
- * @brief       Finger handler
+ * @brief       Finger handler attaches a PressureSensor to a servo 
  */
 #pragma once
 

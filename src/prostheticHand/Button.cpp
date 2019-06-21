@@ -23,9 +23,9 @@ void Button::service(void *userData) {
 
     // Otherwise, reset state and last push time
     else {
-        if (this->lastPressed && this->onRelease) {
+        if (this->lastPressed && this->onRelease)
             this->onRelease((void *)userData, time - this->lastPressed);
-        }
+    
         this->lastPressed = this->lastPushed = 0;
     }
 

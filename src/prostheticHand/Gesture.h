@@ -1,5 +1,5 @@
 /**
- * @file        Gesture.cpp
+ * @file        NA
  * @date        2019-06-19
  * @author      Dylan Duunk
  * 
@@ -13,7 +13,12 @@
  */
 struct Gesture {
     const char *name;
-    const int rotation[5]; // Array of rotation for each servo
+    
+    /**
+     * @brief       Stores an array for the rotation
+     *              of each servo
+     */
+    const int rotation[5]; 
 
     /**
      * @brief       Called on gesture activation

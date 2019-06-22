@@ -3,7 +3,7 @@
  * @date        2019-06-19
  * @author      Dylan Duunk
  * 
- * @brief       Finger handler attaches a PressureSensor to a servo 
+ * @brief       Finger handler attaches a ForceSensor to a servo 
  */
 #pragma once
 
@@ -22,6 +22,6 @@ enum FingerName {
  *              Define in a zero-terminated array
  */
 struct Finger {
-    // PressureSensor sensor; 
+    // ForceSensor sensor; 
     Servo servo;
 };

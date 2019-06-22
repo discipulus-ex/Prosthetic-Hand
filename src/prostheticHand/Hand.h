@@ -20,15 +20,19 @@ void Hand_onNextPressed(void *self);
 void Hand_onPrevPressed(void *self);
 void Hand_onRelease(void *self, unsigned long duration);
 
+const int gestureArraySize = 12;
+
 class Hand {
     // Configuration
     const int beginServoPin = 2; 
 
-    int activeGesture;
+    int activeGesture = 1; // Make sure we skip the NULL value
+    const int gestureSize = gestureArraySize;
 
     // Pre-defined gestures
-    Gesture gestures[11] = {
-    //    Gesture name      Rotation for each servo
+    const Gesture gestures[gestureArraySize] = {
+        { 0 },
+//        Gesture name      Rotation for each servo
         { "Thumb up", {0, 180, 180, 180, 180} },
         { "Pointy finger", {180, 0, 180, 180, 180} },
         { "Give em the finger", {180, 180, 0, 180, 180} },
@@ -49,7 +53,7 @@ class Hand {
      * @brief       Physical buttons on hand palm
      */
     Button buttons[6] = {
-    //         Button name   Pin    Press callback          Release callback
+//      Button name          Pin    Press callback          Release callback
         Button("Play",       11,    Hand_onPlayPressed,     Hand_onRelease),
         Button("Pause",      10,    Hand_onPausePressed,    Hand_onRelease),
         Button("Stop",       9,     Hand_onStopPressed,     Hand_onRelease),
@@ -59,7 +63,6 @@ class Hand {
     };
 
 public:
-
     /**
      * @brief       Button press event for xxxxx buttons
      */

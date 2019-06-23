@@ -26,23 +26,25 @@ class Hand {
     // Configuration
     const int beginServoPin = 2; 
 
+    bool isDetached = false;
+
     int activeGesture = 1; // Make sure we skip the NULL value
     const int gestureSize = gestureArraySize;
 
     // Pre-defined gestures
     Gesture gestures[gestureArraySize] = {
         { 0 },
-//        Gesture name      Rotation for each servo
-        { "Thumb up", {0, 180, 180, 180, 180} },
-        { "Pointy finger", {180, 0, 180, 180, 180} },
-        { "Give em the finger", {180, 180, 0, 180, 180} },
-        { "Puttin a ring on it", {180, 180, 180, 0, 180} },
-        { "Pinky pinky", {180, 180, 180, 180, 0} },
-        { "Imma shoot you", {0, 0, 180, 180, 180} },
-        { "Peace out", {180, 0, 0, 180, 180} },
-        { "Rockin it", {180, 0, 180, 180, 0} },
-        { "Imma slap you", {0, 0, 0, 0, 0} },
-        { "Imma slap harder", {180, 180, 180, 180, 180} },
+//        Gesture name              Rotation for each servo
+        { "Thumb up",               {0, 155, 175, 170, 170} },
+        { "Pointy finger",          {140, 0, 175, 170, 170} },
+        { "Give em the finger",     {140, 155, 0, 170, 170} },
+        { "Puttin a ring on it",    {140, 155, 175, 0, 170} },
+        { "Pinky pinky",            {140, 155, 175, 170, 0} },
+        { "Imma shoot you",         {0, 0, 175, 170, 170} },
+        { "Peace out",              {140, 0, 0, 170, 170} },
+        { "Rockin it",              {140, 0, 175, 170, 0} },
+        { "Imma slap you",          {0, 0, 0, 0, 0} },
+        { "Imma slap harder",       {140, 155, 175, 170, 170} },
         /**
          * Add more??
          */
@@ -104,6 +106,11 @@ public:
      *              Call periodically in loop
      */
     void service(void);
+
+    /**
+     * @brief       Attach the servo's  
+     */
+    void attachServos(void);
 
     /**
      * @brief       Fingers attached to hand

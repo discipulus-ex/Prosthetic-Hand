@@ -8,20 +8,28 @@ void Hand_onNextPressed(void *self) { ((Hand *)self)->onNextPressed(); }
 void Hand_onPrevPressed(void *self) { ((Hand *)self)->onPrevPressed(); }
 void Hand_onRelease(void *self, unsigned long duration) { ((Hand *)self)->onRelease(duration); }
 
+/** TODO generalize the servo attaching */
 void Hand::onPlayPressed() {
+    if (this->isDetached) {
+        this->attachServos();
+        this->isDetached = false;
+    }    
+
     this->write(this->gestures[this->activeGesture]);
 }
 
 /** TODO */
 void Hand::onPausePressed() {
     Serial.println("Pause!");
-    Serial.println(this->activeGesture);
+    for (int i = 0; i < FingerName::Count; i++) {
+        this->fingers[i].servo.detach();
+    }
+    this->isDetached = true;
 }
 
-/** TODO */
 void Hand::onStopPressed() {
-    Serial.println("Stop!");
-    // this->write(0);
+    Gesture gesture = { "Stop", {0, 0, 0, 0, 0} };
+    this->write(gesture);
 }
 
 void Hand::onNextPressed() {
@@ -41,10 +49,7 @@ void Hand::onRelease(unsigned long duration) {
 }
 
 Hand::Hand() {
-    // Attach servos
-    for (int i = 0; i < FingerName::Count; i++) {
-        this->fingers[i].servo.attach(this->beginServoPin + i);
-    }
+    this->attachServos();
 }
 
 void Hand::service(void) {
@@ -57,6 +62,17 @@ void Hand::service(void) {
     }
 }
 
+void Hand::attachServos(void) {
+    // Attach servos
+    for (int i = 0; i < FingerName::Count; i++) {
+        this->fingers[i].servo.attach(this->beginServoPin + i);
+    }
+}
+
+/**
+ * @brief       Prevent finger collision by 
+ *              guessing thumb movement 
+ */
 void Hand::write(Gesture &gesture) {
     Serial.print("Applying gesture ");
     Serial.println(gesture.name);

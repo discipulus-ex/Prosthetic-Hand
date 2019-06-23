@@ -30,7 +30,7 @@ class Hand {
     const int gestureSize = gestureArraySize;
 
     // Pre-defined gestures
-    const Gesture gestures[gestureArraySize] = {
+    Gesture gestures[gestureArraySize] = {
         { 0 },
 //        Gesture name      Rotation for each servo
         { "Thumb up", {0, 180, 180, 180, 180} },

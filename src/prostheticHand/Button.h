@@ -20,7 +20,7 @@ class Button {
     unsigned long lastPressed;
 
 public:
-    const char * name;
+    const char *name;
     const int pin;
 
     // Configuration
@@ -33,7 +33,7 @@ public:
      * @param       Button press callback
      * @param       Button release callback
      */
-    Button(const char * name,
+    Button(const char *name,
            const int pin,
            void (*onPress)(void *self) = nullptr,
            void (*onRelease)(void *self, unsigned long duration) = nullptr);

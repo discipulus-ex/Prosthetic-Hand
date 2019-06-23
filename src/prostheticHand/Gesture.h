@@ -12,7 +12,7 @@
  *              Define in a zero-terminated array
  */
 struct Gesture {
-    const char * name;
+    const char *name;
     
     /**
      * @brief       Stores an array for the rotation

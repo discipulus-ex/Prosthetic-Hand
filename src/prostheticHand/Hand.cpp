@@ -8,7 +8,6 @@ void Hand_onNextPressed(void *self) { ((Hand *)self)->onNextPressed(); }
 void Hand_onPrevPressed(void *self) { ((Hand *)self)->onPrevPressed(); }
 void Hand_onRelease(void *self, unsigned long duration) { ((Hand *)self)->onRelease(duration); }
 
-/** TODO generalize the servo attaching */
 void Hand::onPlayPressed() {
     if (this->isDetached) {
         this->attachServos();
@@ -18,7 +17,6 @@ void Hand::onPlayPressed() {
     this->write(this->gestures[this->activeGesture]);
 }
 
-/** TODO */
 void Hand::onPausePressed() {
     Serial.println("Pause!");
     for (int i = 0; i < FingerName::Count; i++) {
@@ -28,8 +26,7 @@ void Hand::onPausePressed() {
 }
 
 void Hand::onStopPressed() {
-    Gesture gesture = { "Stop", {0, 0, 0, 0, 0} };
-    this->write(gesture);
+    this->write(this->relaxGesture);
 }
 
 void Hand::onNextPressed() {
@@ -63,22 +60,43 @@ void Hand::service(void) {
 }
 
 void Hand::attachServos(void) {
-    // Attach servos
     for (int i = 0; i < FingerName::Count; i++) {
         this->fingers[i].servo.attach(this->beginServoPin + i);
     }
 }
 
-/**
- * @brief       Prevent finger collision by 
- *              guessing thumb movement 
- */
 void Hand::write(Gesture &gesture) {
     Serial.print("Applying gesture ");
     Serial.println(gesture.name);
 
-    for (int i = 0; i < FingerName::Count; i++) {
-        this->fingers[i].servo.write(gesture.rotation[i]);
-        delay(500); // Add a delay to prevent finger collision
+    /** 
+     * Check whether the thumb is in it's 180 position,
+     * and whether it's blocking the movement of index
+     * if so, move the thumb to it's 0 position,
+     * move the index finger to it's designated position
+     * and move the thumb back to it's 180 position
+     */
+    // if (gesture.rotation[0] == 140 && gesture.rotation[1] == 0) {
+    //     this->fingers[0].servo.write(0);
+    //     this->fingers[1].servo.write(gesture.rotation[1]);
+    //     this->fingers[0].servo.write(gesture.rotation[0]);
+    // } else if (gesture.rotation[0] == 0 && gesture.rotation[1] == 155) {
+    //     this->fingers[1].servo.write(gesture.rotation[1]);
+    //     this->fingers[0].servo.write(gesture.rotation[0]);
+    // } else {
+    //     this->fingers[0].servo.write(gesture.rotation[0]);
+    //     this->fingers[1].servo.write(gesture.rotation[1]);
+    // }
+
+    for (int i = 0; i < FingerName::Count; i++) { //@edited i = 0
+        if (gesture.rotation[i] <= 90) {
+            this->fingers[i].servo.write(gesture.rotation[i] + this->fingers[i].sensors[i].correctionVal);
+            delay(500); // Add a delay to prevent finger collision
+        } 
+
+        if (gesture.rotation[i] > 90) {
+            this->fingers[i].servo.write(gesture.rotation[i] - this->fingers[i].sensors[i].correctionVal);
+            delay(500); // Add a delay to prevent finger collision
+        }
     }
 }

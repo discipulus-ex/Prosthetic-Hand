@@ -1,0 +1,1 @@
+Oymotion uses UART (over serial)

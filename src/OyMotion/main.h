@@ -9,11 +9,3 @@
 
 #include "Arduino.h"
 #include "Hand.h"
-
-const int dataPin = A5;
-const int latchPin = A6;
-const int clockPin = A7;
-
-byte forceSensors = 0;
-
-void shiftByte(uint8_t val);

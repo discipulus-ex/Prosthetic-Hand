@@ -13,6 +13,12 @@ void setup() {
     pinMode(dataPin, OUTPUT);
     pinMode(latchPin, OUTPUT);
     pinMode(clockPin, OUTPUT);
+
+    // for (int i = 0; i < FingerName::Count; i++) {
+    //     bitSet(forceSensors, i);
+    //     shiftByte(forceSensors);
+    //     delay(500);
+    // }
 }
 
 void loop() {
